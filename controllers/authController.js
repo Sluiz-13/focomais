@@ -1,25 +1,18 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const fakeUser = {
-  id: 1,
-  name: 'Luiz Fernando',
-  email: 'teste@focomais.com',
-  password: bcrypt.hashSync('123456', 8)
-};
-
 exports.login = (req, res) => {
   const { email, senha } = req.body;
 
-  if (email !== fakeUser.email || !bcrypt.compareSync(senha, fakeUser.password)) {
+  if (email !== User.email || !bcrypt.compareSync(senha, User.password)) {
     return res.status(401).json({ message: 'Credenciais inválidas' });
   }
 
   const token = jwt.sign(
   {
-    id: fakeUser.id,
-    name: fakeUser.name,
-    email: fakeUser.email
+    id: User.id,
+    name: User.name,
+    email: User.email
   },
   process.env.JWT_SECRET,
   { expiresIn: '1h' }
