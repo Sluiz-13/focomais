@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "pg": "^8.14.1"
+  },
+  "scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+},
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
